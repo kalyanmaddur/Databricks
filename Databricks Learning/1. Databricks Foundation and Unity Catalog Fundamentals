@@ -1,0 +1,69 @@
+Databricks uses Apache Spark to process massive data efficiently.
+
+
+**Challenges with the Traditional data platforms**
+
+	1.multiple tools
+	(ingestion, processing, orcestration,goverance)
+	was very hard to integrate so many tools
+
+	2.complex infrstructure
+	need to manage cluster manualy,very defficult to scale and maintain
+
+	 3.Slow & inefficient pipeline
+	 traditional etl piplelines are slow
+
+	4.Lack of  collabration
+	Teams end up working in isolation, sharing the notebooks(jupyeter noteebook)/code is painfull
+
+	5.Unrealiable data lakes
+     Datalake provides flexibility , also hold huge data -- used by DS/ML team
+     Datawarehouse is more performant or relaiabe -- Used by BI/reporting team
+     In the above data from DataLake is sent to Datawarehouse
+     Datawarehouse holds subset of DataLake
+
+     In traditional systesm 2 different systesm has to be maintained
+     extra ETL activity required to bring data from Datalake to Datawarehouse
+     Here the challenge is same copy at 2 different loc (Datalake & Datwarehouse)
+
+	In traditional Datalake No ACID transactions.
+	Also schema mismatches can break the pipeline
+	In traditional Data lake there is no versioning
+	There is no audit histroy
+
+	6.No Vendor locking
+
+
+
+In Databricks
+
+Ingestion  -> lake flow connect
+ETL - Lake flow declarative pipeline (Delta live tables)
+Orchestration - Lake flow jobs
+Governance - Unity catalog
+
+
+Databricks offers Data Lake house, it is powered by Delta Lake
+
+ Data Lake  ( eg: AWS S3 / ADLS Gen2,GCP)
+on top of this cloud data, Databricks will create a wrapper and provide Delta Lake
+This Delta Lake is combination of Data Lake + Data warehouse
+Data is still kept in our cloud, Data bricks just creates a wrapper on it.
+Delta lake provides
+	Acid transactions
+	Time travel
+	Schema enforcement
+
+
+**--Read bottom to up--**
+Unity Catalog -  Governance/Metadata
+Delta Lake
+Cloud storage - Azure/AWS/GCP -- Data Lake
+
+The above is used by DE/DS/Data Analyst
+
+
+Databricks has 2 editions
+1.community edition
+2.free edition
+
