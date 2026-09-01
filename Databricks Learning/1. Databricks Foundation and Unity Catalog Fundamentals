@@ -1,7 +1,7 @@
 Databricks uses Apache Spark to process massive data efficiently.
 
 
-**Challenges with the Traditional data platforms**
+Challenges with the Traditional data platforms
 
 	1.multiple tools
 	(ingestion, processing, orcestration,goverance)
@@ -55,7 +55,7 @@ Delta lake provides
 	Schema enforcement
 
 
-**--Read bottom to up--**
+--Read bottom to up--
 Unity Catalog -  Governance/Metadata
 Delta Lake
 Cloud storage - Azure/AWS/GCP -- Data Lake
@@ -66,4 +66,45 @@ The above is used by DE/DS/Data Analyst
 Databricks has 2 editions
 1.community edition
 2.free edition
+
+------------------------------------------------------------------------------------------------------------------------
+Databricks in Azure
+
+Step 1 : Create Azure Resource group  -- name {project-env-region-rg} -- databrricks-practice-southIndia-rg
+Step 2 :Create Azure Databricks service
+	  workspace name -- project-env-region-dbws
+
+
+Create and attach a compute resource for executing in notebook
+we can also create our own compute 
+We can have server less or our own compute
+
+How cost is determined for Databricks in Azure
+if there are 3 vms
+the cost for 3 vms + Service Cost
+i.e
+1.Infra cost(azure)
+2.software cost(Databricks) - charges in DBU - Databricks units charged by Databricks
+
+------------------------------------------------------------------------------------------------------------------------
+
+Managed Resource group Name -- When we create a cluster in Databricks in backend it will run VM's on Azure, in which resource group these backend resource should resides.
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+DBFS - Databricks file system
+
+DBFS commands list
+
+
+A spark session created automatically as soon as we connect to the compute in the databricks notebook
+it is created under the variable name spark
+
+write sql command in python note book in databricks?
+
+use %sql magic command first and write the sql
+
+Databricks magic commands and list
 
