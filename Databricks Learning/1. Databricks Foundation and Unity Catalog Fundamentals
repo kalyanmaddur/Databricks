@@ -108,3 +108,37 @@ use %sql magic command first and write the sql
 
 Databricks magic commands and list
 
+------------------------------------------------------------------------------------------------------------------------
+
+Databricks Architecture -- High level 
+
+
+1.Control plane 
+	lies in databricks cloud account
+	It keeps Metadata, configurations(cluster config,notebook config, job info) and ACL (access control list)
+	Databricks workspace is actually resides in this plane
+	(Every workspace has its own unique id)
+	Serverless compute resides in this plane
+	
+
+Control plane includes the backend services which are provided by Databricks
+
+2.Data plane / compute plane
+	lies in customer cloud account
+	this actually hold client data 
+	 classic compute cluster runs in this plane
+
+
+Compute Plane Types:
+	1.Classic Compute
+	2.Serverless Compute
+
+
+High level Architecture:
+Classic Workspace Architecture
+]
+
+
+Serverless Workspace Architecture
+
+------------------------------------------------------------------------------------------------------------------------
