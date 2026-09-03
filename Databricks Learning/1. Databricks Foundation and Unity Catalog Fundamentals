@@ -142,3 +142,13 @@ Classic Workspace Architecture
 Serverless Workspace Architecture
 
 ------------------------------------------------------------------------------------------------------------------------
+
+Need for Multiple databricks workspace**
+
+An organization can have a single databricks account and most likely have multiple databricks workspaces
+
+We need multiple workspace for
+for diff env ( dev,stg,prd)
+for diff business uses ( sales,finance, IT)
+
+------------------------------------------------------------------------------------------------------------------------
