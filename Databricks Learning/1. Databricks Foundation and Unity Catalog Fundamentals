@@ -143,12 +143,92 @@ Serverless Workspace Architecture
 
 ------------------------------------------------------------------------------------------------------------------------
 
-Need for Multiple databricks workspace**
+Need for Multiple databricks workspace
 
 An organization can have a single databricks account and most likely have multiple databricks workspaces
 
 We need multiple workspace for
 for diff env ( dev,stg,prd)
 for diff business uses ( sales,finance, IT)
+
+------------------------------------------------------------------------------------------------------------------------
+
+Tables
+
+A table has 2 parts  --> Data + Metadata
+
+Data -- stored in files ( in your own cloud account)
+Metadata -- stored in Metastore  -- Eg:- Hive Metastore ( a legacy one in Databricks)
+
+Each workspace will have its own hive meta-store ( a legacy feature)
+A hive meta-store has 2 level namespace 
+Schema/database + table name
+
+issues with Hive meta-store
+ - Hive meta-store offers basic metadata management but lacks fine grained access controls
+ - it lacks built in data governance features like 
+	- data lineage
+	- auditing
+	- access controls
+	These limitations makes it challenging to manage security and compliance
+
+   More over hive meta-store can deal only with structured data
+
+Tables in hive meta-store do not benefit from the full set of security and governance features provided by the unity catalogue such as built n auditing , lineage and access control
+
+Now in the latest version of data bricks workspace the unity catalogue enabled
+Now whenever we create a databricks workspace, we will get an automatically provisioned unity catalogue meta-store..
+
+A catalogue is named after your workspace
+
+At the very top we have
+
+
+Metastore
+|
+Catalog
+|
+Schema/Databases
+|
+Tables
+
+so inside  meta-store -->catalogue --> Schema --> Tables
+
+Meta-store will store metadata and security related config
+
+Only one meta-store for each region
+
+if we create a workspace in central India, then a new meta-store will be created in this region
+if we create new workspace in this region, the workspace will be attached to this meta-store.
+For every workspace there will be a new catalogue with the name similar to workspace, also in this default catalogue we will have 2 Schema (default & information_schema)
+
+
+Can one workspace have more than one meta-store?
+No it can't have
+
+Can one meta-store be associated with multiple workspace?
+It can be if the workspace are in the same region
+
+The best practise is to have 1 meta-store in 1 region and then attach all workspace to the meta-store in that region
+
+
+Two workspaces cannot share the same managed resource group name in Databricks
+
+
+In Databricks hive meta-store is replaced by Unity catalogue
+Unity catalogue is used to handle Metadata and for Governance
+To use Unity catalogue meta-store is necessary
+
+Unity catalogue meta-store has 3 level name space 
+
+
+Azure databricks accounts portal : http://accounts.auredatabricks.com/
+
+The Azure Databricks account portal (console) is the centralized, high-level control plane for administrators to manage users, security, and workspaces.
+It enables crucial administrative tasks such as
+configuring Unity Catalog metastores for governance, 
+managing identity (users/groups), 
+creating/deploying workspaces, and 
+managing billing/subscription settings
 
 ------------------------------------------------------------------------------------------------------------------------
