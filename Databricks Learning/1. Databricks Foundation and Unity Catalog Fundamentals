@@ -232,3 +232,36 @@ creating/deploying workspaces, and
 managing billing/subscription settings
 
 ------------------------------------------------------------------------------------------------------------------------
+Creating a table in Databricks 
+
+Table types: 
+	Managed 
+	External 
+	Foreign
+
+
+Manged table  
+	data + Metadata is managed by databricks
+	metadata will be stored in meta-store 
+
+
+Sql commands to check
+
+current meta-store:
+Select current_metastore();
+
+current catalogue:
+Select current_catalog();
+
+current database:
+Select current_schema(); or Select current_database();
+
+show all available catalogues:
+show catalogs;
+
+show all databases in the current catalogue:
+show databases; or show schemas;
+
+Set the catalogue to use:
+use catalog name;
+
