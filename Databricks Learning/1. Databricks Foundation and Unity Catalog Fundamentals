@@ -265,3 +265,34 @@ show databases; or show schemas;
 Set the catalogue to use:
 use catalog name;
 
+
+To set the location for a table in databricks:
+
+A table data can be stored at meta-store level or catalogue  level  or schema level
+
+Whenever we create a workspace , a storage account location is not associated with it.
+
+We can set the storage location at meta-store level, but it is recommended to store the data at catalog level, this can be done using azure databricks account portal
+Meta-store level storage is not recommended as it will restrict to maintain the strict separation of storage across catalogs or environments(workspaces).
+
+If we set the storage level at meta-store, by default managed table data will store in it.
+
+By default managed table data is stored at catalog level,
+
+location : storage account name + container name + catalog
+
+we can get the storage account name and the container name from table description of the table.
+
+Eg:
+abfss:t///unity-catalog-storage @dbstorageix5ewgkr222ds.dfs.core.windows.ne7405613473762775/__unitystorage/catalogs/ff6bf4cd-0a85-4d1c-9728-197921752877/tables/d9f0c692-a6d9-4e1d-bc4f-4fff7f775ab9
+
+storage account name : dbstorageix5ewgkr222ds
+container name : unity-catalog-storage
+catalog name :
+
+
+Tables in databricks have 3 level name space 
+so utilize the 3 level name for creating or selecting or working a table 
+3 level name space -- catalog + database + table
+
+for tables stored as managed table in legacy hive meta-store, the data is stored in DFS ( databricks file system)
