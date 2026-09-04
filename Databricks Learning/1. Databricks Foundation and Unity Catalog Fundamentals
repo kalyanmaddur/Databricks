@@ -232,7 +232,8 @@ creating/deploying workspaces, and
 managing billing/subscription settings
 
 ------------------------------------------------------------------------------------------------------------------------
-Creating a table in Databricks 
+
+Creating a table in Databricks
 
 Table types: 
 	Managed 
@@ -296,3 +297,28 @@ so utilize the 3 level name for creating or selecting or working a table
 3 level name space -- catalog + database + table
 
 for tables stored as managed table in legacy hive meta-store, the data is stored in DFS ( databricks file system)
+
+Creating a table in Databricks:
+
+create table if not exists catalogname.databasename.tablename ( );
+
+
+Creating your own catalog / Create external loc at Catalog level
+
+We can directly create a catalog, we have to define a storage location if the storage level at metastore is not defined 
+
+Error if we try to create a catalog :
+Metastore storage root URL does not exist. Default Storage is enabled in your account. You can use the UI to create a new catalog using Default Storage, or please provide a storage location for the catalog (for example 'CREATE CATALOG myCatalog MANAGED LOCATION '<location-path>').
+
+
+1. create your own storage account with hierarchical name space
+2. Add a container
+3. Create access connector for databricks to access this location in azure portal
+4. Give access to the created storage account. select the role storage bob data contributor  and add access connector in members.This makes databricks to connect to the storage account.
+5. Create an external location so that databricks can manage it for better governance.
+	create external location with storage credentials to enable fine grained access control.
+	Create Credentials foe external loc in databricks
+		name and give the access connector id ( can be fetched from azure - from the access connector created)
+    create external loc now, specify the URL with container and storage account name, also add storage credentials.
+This loc is managed by unity catalog now, when creating the catalog mention as managed location. this is governed by dataabricks so can't be accesed randomly even though it resides i our own storage location.
+When you use the MANAGED LOCATION clause during catalog creation, you are designating that specific path as the "default home" for all new tables and volumes created within that catalog, enabling advanced Databricks features
