@@ -359,3 +359,34 @@ managed loca
 'abfss://unitycatalog@dbstrgapril12.dfs.core.windows.net/catalog'
 
 
+External tables
+
+Tables with specifed external loc while creation are External tables
+
+Unity catalog  governs 
+data access permissions but does not manage data life cycle , optmiations , storage location or layout
+Unity catalog priviliges are not enforeced when user access data friles fro  external systems
+
+Dropping an external table, will not have effect on data files.
+
+When you create an external table, 
+we can either register an existing directory of data file as table
+or 
+provide a path to create a new dir
+
+
+Databricks recommends using external tables for the following use cases:
+	- Need to resister a table backed by existing data that is not compatible with unity catalog managed tables 
+	- required a direct access to the data from non databricks clients
+
+
+File formats suported by External tables
+Delta
+Csv
+JSON
+avro
+parquet
+orc
+text
+
+
