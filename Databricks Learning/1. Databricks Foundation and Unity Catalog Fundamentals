@@ -322,3 +322,40 @@ Metastore storage root URL does not exist. Default Storage is enabled in your ac
     create external loc now, specify the URL with container and storage account name, also add storage credentials.
 This loc is managed by unity catalog now, when creating the catalog mention as managed location. this is governed by dataabricks so can't be accesed randomly even though it resides i our own storage location.
 When you use the MANAGED LOCATION clause during catalog creation, you are designating that specific path as the "default home" for all new tables and volumes created within that catalog, enabling advanced Databricks features
+
+------------------------------------------------------------------------------------------------------------------------
+
+Creating External locations in Databricks using SQL
+
+
+All metastate oerations can be performe by user admin
+if we have to assign extrnal location at metasore  level we need perrmissionsas Metasotre Admin
+
+If the external loc at metasote level is already ldefined, then when creating the catalog no need to mention the managed loc again only need to spevify when loc is not spefified at metasore level sp that we can create it at catalog level
+
+
+Creating external loc using code at catalog level
+
+Create External Lcaotion  myexternalloc URL
+'abfss://unitycatalog@dbstrgapril12.dfs.core.windows.net/catalog'
+With (Credential myextloccredentials)
+comment 'external location at catalog level'
+
+
+When you have exteranl storage loc at both metasotre and catalog level, 
+Catalog level loc will have the precedence 
+i.e if we create a table and store data will be stored at catalog level 
+
+Precedence of the external loc for data storage is 
+
+table > schema > catalog > metastore
+
+usually the inward things will have more predence.
+
+Creatign schema with external managed location
+
+Create schema myschema
+managed loca
+'abfss://unitycatalog@dbstrgapril12.dfs.core.windows.net/catalog'
+
+
