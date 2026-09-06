@@ -1,0 +1,49 @@
+
+All Purpose compute
+
+
+For Performing Interactive analysis -- Note book is good 
+or job creating 
+or Declarative pipeline - ETL 
+or SQL 
+
+for all the above actions Compute is needed
+
+
+All Purpose compute -- (Classic compute)
+Provisioned compute used to analyse data in note books
+A dedicated server or instance to run things
+
+Costs involved for a compute
+
+Infra - azure - storage account
+Software - databricks  - 
+
+Cost is in terms of DBU - databricks units 
+
+Serverless compute is expensive than the classic compute
+classic compute takes time to be created.
+
+Link for cost -
+databricks -- prcing.datascience-ml
+azure -- virtual-machines/windows/pricing 
+
+We can also  enable auto scaling while creating the compute
+
+Auto Scaling
+Photon acceleration
+Node types 
+worker types
+Compute policy
+
+
+
+Generally  compute to memory ratio is 1:4
+
+memory compute optimized
+16 gb ram - 4 cpu cores
+32 gb ram -  4 cpu cores
+ 
+compute optimised
+16 gb ram - 8 cpu cores
+
