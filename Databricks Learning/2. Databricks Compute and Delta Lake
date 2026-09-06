@@ -47,3 +47,45 @@ memory compute optimized
 compute optimised
 16 gb ram - 8 cpu cores
 
+
+Job Compute
+
+Created automatically when a job starts running
+We can create a Job schedule to run from one time to another 
+
+
+Compute policies types:
+
+	Personal Compute
+		Allows users to create an individually assigned single node compute resource with minimal configurations, intended for single user.
+		
+	Job compute
+		Allows to create a general purpose default compute for jobs
+		
+	Legacy shared compute
+		
+	Shared compute
+		Allows to create larger multi node resources, intended for multiple users to share
+		
+	Power user compute
+		Allows to create larger  multi node clusters. intended for single user workloads which require more resources.
+
+
+
+Custom policy
+we can create a custom policy, this mostly inherites the configurations from the policy types which we can choose from the policy family.
+Custom policy are helfull when we need to restrct users on some options like termination time, runtime, node type.
+
+Under the compute tab in policies we can see which cluster are using the current policy
+compute -> policies ->compute tab
+
+Permissions on compute:
+	Can attach to -- allows you to attach your notebook to the compute
+	Can restart     -- allows to start,restart and terminate the compute including attach permissions
+	Can Manage  -- allows to edit the compute details, permissions and size, including both attach and restart permissions
+	
+	Attach -- Attach
+	Restart -- Restart + Attach
+	Manage -- Manage + Restart + Attach
+
+
