@@ -117,3 +117,44 @@ Version - 16.4
 LTS - Long term support version
 
 ------------------------------------------------------------------------------------------------------------------------
+
+Server less Compute
+
+
+Challenges faced by classic compute
+	-Wait time for classic compute is lot, 5-7 mins 
+	-Need to choose many infra settings for performance /cost
+	-Server less compute is simple, performant and maintenance free
+
+
+	However in server less we can just pick a goal
+	-standard mode
+	-Performance mode
+		Standard mode is some what similar to classic compute and has some wait time compared to performance mode.
+
+
+
+In Classic compute:
+Server -> infra + software
+
+infra - Azure 
+Software - Databricks
+
+In Server less compute 
+infra + Software -> Databricks
+
+
+Classic compute runs in cloud account like azure
+Server less compute runs in databricks i.e in control plane 
+
+
+Server less compute will reduce the wait time and also scales automatically.
+Server less is faster than classic compute.
+There is no spark UI in server less as we don't have any dedicated server.
+Server less compute charges mainly for the queries you run and for the sessions and not for the resources
+
+Environment option is only for server less, available in the right plane
+Memory in environment tab refers to the memory used for the session or notebook REPL.(Read Evaluate Print Load)
+The notebook acts like REPL and this will communicate to the spark cluster using spark connect
+
+Notebook REPL -> Spark connect -> Spark cluster.
