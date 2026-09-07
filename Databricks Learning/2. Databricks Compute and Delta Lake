@@ -147,6 +147,14 @@ infra + Software -> Databricks
 Classic compute runs in cloud account like azure
 Server less compute runs in databricks i.e in control plane 
 
+Server less compute is a version less product, databricks automatically upgrades to the latest version and it always run on the latest version.
+
+Server less has overspend protection, this controls long running queries. This helps in not to overspend.
+Server less notebooks have a default execution timeout of 2.5 hours.
+
+Currently Python & SQL are the only supported languages in Server less.
+
+
 
 Server less compute will reduce the wait time and also scales automatically.
 Server less is faster than classic compute.
