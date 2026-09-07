@@ -88,4 +88,32 @@ Permissions on compute:
 	Restart -- Restart + Attach
 	Manage -- Manage + Restart + Attach
 
+------------------------------------------------------------------------------------------------------------------------
 
+Databricks Runtime Version & SQL Pool
+
+
+
+Pools
+	- Used to reduce the start and auto scaling time.
+
+
+
+Databricks Runtime Version (DBR) 
+
+This adds many features including 
+
+Delta Lake
+Installed Java, scala, python and R libraries
+Ubuntu and its system libraries
+GPU libraries
+
+Eg:
+Version - 16.4
+
+16 - major version
+4   - feature version
+
+LTS - Long term support version
+
+------------------------------------------------------------------------------------------------------------------------
