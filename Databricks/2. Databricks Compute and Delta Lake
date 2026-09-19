@@ -166,3 +166,25 @@ Memory in environment tab refers to the memory used for the session or notebook 
 The notebook acts like REPL and this will communicate to the spark cluster using spark connect
 
 Notebook REPL -> Spark connect -> Spark cluster.
+
+Creating budget policy
+settings -> Compute pane -> Budget policy
+
+ Importance of the budget policy, can help us to how many dbu's  a user has consumed.
+ To check this, we have to query the systems tables.
+
+
+
+Server less compute is a version less product, databricks automatically upgrades to the latest version and it always run on the latest version. 
+
+Server less has overspend protection, this controls long running queries. This helps in not to overspend.
+Server less notebooks have a default execution timeout of 2.5 hours.
+
+Currently Python & SQL are the only supported languages in Server less.
+
+
+SQL Warehouses 
+Only to run sql queries.
+ Types : Classic, Pro, Server less
+
+------------------------------------------------------------------------------------------------------------------------
