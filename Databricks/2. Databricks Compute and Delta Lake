@@ -222,3 +222,78 @@ Challenges of Data Lake :
 ------------------------------------------------------------------------------------------------------------------------
 
 
+Why Data Lake lack ACID guarantee
+
+
+Example:
+When we run a spark job 10 multiple tasks underneath and each generate a part file..
+
+Scenario 1 -  A job failed while appending the data
+
+we already have output folder with 5 part files and the current job generates 5 part files, so total is 10.
+
+2 files are generated and job failed in mid
+current total now 7 part files.
+
+The reader will read 7 files
+
+Here Atomicity and Consistency did met 
+
+For Atomicity we need 10 files
+and Consistency then 2 generated files should be cleared
+
+
+Scenario 2 - Job failed while overwriting the data
+
+Overwrite is a 2 step process.
+	1.Delete what is already present
+	2.Write the new data / files
+
+5 part files are already present in the output older and after we ran the job, 2 files are generated and in the mid job fails.
+
+Here 
+	Atomicity 
+	Consistency
+	Durability 
+did not meet 
+
+
+Scenario 3 - Simultaneous Reads and Writes
+
+5 part files are already available  and then you invoked the spark job
+2 part files are written 
+
+and now reader is trying to read while part file 3 is getting processed.
+
+Currently Reader can see 7 files
+
+Here Isolation is lost, 
+cause until all the data is written none should have been read
+
+
+Scenario 4 - Append the data with a different Schema
+
+5 part files are present with each file having 5 columns 
+
+Current running job will write 5 more part files, but these new files ave 7 col
+
+Total - 10 files
+5 files - 5 columns each
+5 files - 7 columns each
+
+When a reader starts reading then whatever the file it reads first then it will assume all the files have same cols
+
+if  5 col file is read then it will assume all files have 5 col each and it is same for the other files
+
+
+
+So with Data lake,
+It may lead to Data Reliability issues, Data Quality issues.
+There is no Data validation
+The above scenarios leads data corruption in failure scenarios
+No DML (Update and Delete)operation as ACID properties are not available
+Difficult to maintain historical versions
+
+
+For all the above problems can be overcome by Delta lake 
+
