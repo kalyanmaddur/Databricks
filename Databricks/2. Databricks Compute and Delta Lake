@@ -297,3 +297,67 @@ Difficult to maintain historical versions
 
 For all the above problems can be overcome by Delta lake 
 
+------------------------------------------------------------------------------------------------------------------------
+
+Introduction to Delta Lake**
+
+Delta lake - is an open source storage layer
+it is like a small utility installed on your spark cluster.
+
+
+Parquet format
+	- It is a column based file format
+	- Very will used with Apache spark
+	- It embeds the metadata
+
+Delta is combination of Parquet and Transaction logs
+
+Delta -> Parquet + Transaction logs.
+
+If in 5 tasks are running, then
+in delta
+	5 part files (parquet) will be created in output folder
+	along with another folder will be created  - _delta_logs
+		inside this folder **Transaction** entities will be held like metadata,whether file has been added or deleted or updated
+			this folder contains  0000.json files
+
+For Performing actions in Delta lake
+
+**Write Operation:**
+
+5 parquet files written and 1 transaction file
+
+part-000.parquet
+part-001.parquet
+part-002.parquet
+part-003.parquet
+part-004.parquet
+
+_delta_log
+0000.json
+
+Only when all the files are written to the output folder then transction file _delta_log is written making it is successful.
+
+
+**Append Operation:**
+
+2 part files are getting appended
+part-005.parquet
+part-006.parquet
+
+_delta_log
+00001.json
+
+The transaction file is generated only when 2 files are completely written
+Here 7 part files and 2 transaction files
+
+
+For each Write operation:
+	All part files are written first
+	A Transaction log is added to _delta_log folder (JSON format)
+
+For each Read operation:
+	Transaction log files are read first
+	Part files are read based on the data present in log files.
+Transaction files will have the data which are the ones updated, inserted files, this will determine which needed to be read and part files are read accordingly
+
