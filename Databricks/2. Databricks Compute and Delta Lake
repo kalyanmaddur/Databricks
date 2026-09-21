@@ -188,3 +188,37 @@ Only to run sql queries.
  Types : Classic, Pro, Server less
 
 ------------------------------------------------------------------------------------------------------------------------
+
+Introduction to Data Lake and Limitations
+
+Delta Lake - is a file format
+
+Data Lake :
+Data lake is a storage repository that holds vast amount of data of raw in is native format.
+Data lake store all the data in the form of files.
+It can hold any kind of data.
+Eg: S3, ADLS Gen2, GCS
+Data lake is mainly built on object storage, all the above examples are also object storage.
+
+Advantages of Data Lake : 
+	- Cost effective
+	- Scalable
+	- Stores any  kind of data.
+		Structured - CSV
+		Semi  - JSON
+		Unstructured - image,audio & log
+
+Challenges of Data Lake :
+	- No ACID guarantee
+		we need ACID guarantee when we perform transactions.
+		Any database will provide ACID guarantee
+		
+		ACID --
+			Atomicity
+			Consistency
+			Isolation
+			Durability
+
+------------------------------------------------------------------------------------------------------------------------
+
+
